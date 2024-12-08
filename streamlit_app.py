@@ -105,6 +105,8 @@ with st.form("my_form"):
     submittedMedia = st.form_submit_button("สร้าง Media Plan สำหรับ 2 สัปดาห์")
 
     st.write(":red[กรุณากรอกข้อมูลแบรนด์ของท่านก่อนกดสร้าง content pillars หรือ Media Plan สำหรับ 2 สัปดาห์]")
+    st.write(":red[กรุณาใจเย็นและกดหลายรอบ บางทีจะได้และบางทีจะไม่ได้ครับ]")
+
     if submittedMedia:
         user_input = {
             "Brand Name": BrandName,
@@ -132,7 +134,6 @@ with st.form("my_form"):
         print(data)
 
         df = pd.DataFrame(data)
-        df.set_index('Day', inplace=True)
         st.table(df)
 
     if submittedContent:
@@ -161,7 +162,7 @@ with st.form("my_form"):
         data = json.loads(output)
         print(data)
 
-        df = pd.json_normalize(data['content_pillars'])
+        df = pd.json_normalize(data['ContentPillars'])
         print(df)
         st.table(df)
 

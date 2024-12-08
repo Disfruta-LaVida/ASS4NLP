@@ -131,14 +131,9 @@ with st.form("my_form"):
         data = json.loads(output)
         print(data)
 
-        df = pd.DataFrame.from_dict(data)
-        print(df)
+        df = pd.DataFrame(data)
+        df.set_index('Day', inplace=True)
         st.table(df)
-
-        
-        
-
-
 
     if submittedContent:
         user_input = {
@@ -166,7 +161,7 @@ with st.form("my_form"):
         data = json.loads(output)
         print(data)
 
-        df = pd.DataFrame.from_dict(data)
+        df = pd.json_normalize(data['content_pillars'])
         print(df)
         st.table(df)
 
